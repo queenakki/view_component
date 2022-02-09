@@ -7,6 +7,10 @@ title: Changelog
 
 ## main
 
+* Move the `Translatable` module out of experimental mode.
+
+    *Elia Schito*
+
 ## 2.49.0
 
 * Fix path handling for evaluated view components that broke in Ruby 3.1.
