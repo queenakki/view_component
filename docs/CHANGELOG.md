@@ -7,6 +7,10 @@ title: Changelog
 
 ## main
 
+* Add missing config options to `config.view_component`.
+
+    *Simon Fish*
+
 * Add Cometeer and Framework to users list.
 
     *Elia Schito*
