@@ -583,4 +583,19 @@ class IntegrationTest < ActionDispatch::IntegrationTest
       assert_equal ViewComponent::Compiler::DEVELOPMENT_MODE, ViewComponent::Compiler.mode
     end
   end
+
+  def test_config_options_shared_between_base_and_engine
+    Rails.application.config.view_component.yield_self do |config|
+      {
+        generate: config.generate.dup.tap { |c| c.sidecar = true },
+        preview_controller: "SomeOtherController",
+        preview_route: "/some/other/route",
+        show_previews_source: true
+      }.each do |option, value|
+        with_generate(option, value) do
+          assert_equal(config.public_send(option), ViewComponent::Base.public_send(option))
+        end
+      end
+    end
+  end
 end
